@@ -5,13 +5,13 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 0
+        "y": 68.1570639800359
       },
       "nodes": [
         {
           "location": {
-            "x": 856.72208308878817,
-            "y": 288.4513179900174
+            "x": 619.33290908878848,
+            "y": 0
           },
           "nodeIndex": "academy",
           "nodeLineageTag": "881d6f6a-16bf-4731-87b8-5ef87d56cc4c",
@@ -23,8 +23,8 @@
         },
         {
           "location": {
-            "x": 296.0987220899695,
-            "y": 193.82514592944898
+            "x": 262.43906308996958,
+            "y": 222.17012192944895
           },
           "nodeIndex": "box_office",
           "nodeLineageTag": "9d2be0de-f87c-410b-9aa0-ff6955c1fa2e",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 10,
-            "y": 349.4698806419425
+            "y": 478.79383364194234
           },
           "nodeIndex": "genres",
           "nodeLineageTag": "84e8cee8-9bf9-4b54-814c-d54586dc592e",
@@ -49,8 +49,8 @@
         },
         {
           "location": {
-            "x": 582.72208308878817,
-            "y": 168.65224608646861
+            "x": 731.533207088788,
+            "y": 188.1394170864686
           },
           "nodeIndex": "pixar_films",
           "nodeLineageTag": "00b4e3ca-8702-48cd-804a-14dd2806f900",
@@ -62,8 +62,8 @@
         },
         {
           "location": {
-            "x": 268.7022671197638,
-            "y": -10
+            "x": 265.15914511976376,
+            "y": 0
           },
           "nodeIndex": "pixar_people",
           "nodeLineageTag": "5a6376db-7cee-4e96-8419-7d9b4c36c533",
@@ -75,8 +75,8 @@
         },
         {
           "location": {
-            "x": 371.23993912972389,
-            "y": 446.90263598003492
+            "x": 509.42169712972378,
+            "y": 422.10078198003492
           },
           "nodeIndex": "public_response",
           "nodeLineageTag": "66f8ae57-1db5-4b8a-be9b-a173bded60ec",
@@ -88,7 +88,7 @@
         }
       ],
       "name": "All tables",
-      "zoomValue": 100,
+      "zoomValue": 56.447393005377812,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

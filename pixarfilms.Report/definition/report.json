@@ -21,6 +21,19 @@
           }
         }
       }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
     ]
   },
   "resourcePackages": [
@@ -32,6 +45,22 @@
           "name": "CY24SU10",
           "path": "BaseThemes/CY24SU10.json",
           "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "logo37651160399450445.jpg",
+          "path": "logo37651160399450445.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Pixar3228816110873285.png",
+          "path": "Pixar3228816110873285.png",
+          "type": "Image"
         }
       ]
     }
