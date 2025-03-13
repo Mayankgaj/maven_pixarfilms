@@ -1,0 +1,88 @@
+table public_response
+	lineageTag: 66f8ae57-1db5-4b8a-be9b-a173bded60ec
+
+	column film
+		dataType: string
+		lineageTag: 77900878-ced2-4f1a-8cb4-73db18017f0a
+		summarizeBy: none
+		sourceColumn: film
+
+		annotation SummarizationSetBy = Automatic
+
+	column rotten_tomatoes_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 115b698d-aaa1-4bbf-8ec8-5fe556490a82
+		summarizeBy: sum
+		sourceColumn: rotten_tomatoes_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column rotten_tomatoes_counts
+		dataType: int64
+		formatString: 0
+		lineageTag: 8593dd91-f6bb-4d4c-8372-855a352150c2
+		summarizeBy: sum
+		sourceColumn: rotten_tomatoes_counts
+
+		annotation SummarizationSetBy = Automatic
+
+	column metacritic_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f02bfe2-1b53-46f4-9e50-b84496f62a76
+		summarizeBy: sum
+		sourceColumn: metacritic_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column metacritic_counts
+		dataType: int64
+		formatString: 0
+		lineageTag: 42e8c904-70a2-4d30-b60b-b8e415280608
+		summarizeBy: sum
+		sourceColumn: metacritic_counts
+
+		annotation SummarizationSetBy = Automatic
+
+	column cinema_score
+		dataType: string
+		lineageTag: 56396ffb-8439-4795-9201-8d0dbdef62a1
+		summarizeBy: none
+		sourceColumn: cinema_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column imdb_score
+		dataType: double
+		lineageTag: 30ebe16f-edd3-42c0-b8a4-c9b35db250a4
+		summarizeBy: sum
+		sourceColumn: imdb_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column imdb_counts
+		dataType: int64
+		formatString: 0
+		lineageTag: bd13d8cb-d57d-42fe-ae86-75a6a72710be
+		summarizeBy: sum
+		sourceColumn: imdb_counts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition public_response = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/public_response.csv"),[Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"film", type text}, {"rotten_tomatoes_score", Int64.Type}, {"rotten_tomatoes_counts", Int64.Type}, {"metacritic_score", Int64.Type}, {"metacritic_counts", Int64.Type}, {"cinema_score", type text}, {"imdb_score", type number}, {"imdb_counts", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

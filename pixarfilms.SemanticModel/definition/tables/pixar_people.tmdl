@@ -1,0 +1,42 @@
+table pixar_people
+	lineageTag: 5a6376db-7cee-4e96-8419-7d9b4c36c533
+
+	column film
+		dataType: string
+		lineageTag: 23523dce-e672-488d-ae7e-bac495506f71
+		summarizeBy: none
+		sourceColumn: film
+
+		annotation SummarizationSetBy = Automatic
+
+	column role_type
+		dataType: string
+		lineageTag: 96bdfdc8-3230-456a-8ac5-e1771347d613
+		summarizeBy: none
+		sourceColumn: role_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: cba2e464-379a-4f31-96b1-0d143f72dee8
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pixar_people = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/pixar_people.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"film", type text}, {"role_type", type text}, {"name", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

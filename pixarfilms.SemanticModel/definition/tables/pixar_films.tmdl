@@ -1,0 +1,75 @@
+table pixar_films
+	lineageTag: 00b4e3ca-8702-48cd-804a-14dd2806f900
+
+	column number
+		dataType: int64
+		formatString: 0
+		lineageTag: 6401dcb6-7aa8-4f6c-8680-5996a2b7e486
+		summarizeBy: sum
+		sourceColumn: number
+
+		annotation SummarizationSetBy = Automatic
+
+	column film
+		dataType: string
+		lineageTag: a18cd66c-1273-4796-988e-e969a1bf69d5
+		summarizeBy: none
+		sourceColumn: film
+
+		annotation SummarizationSetBy = Automatic
+
+	column release_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 008013a4-6e9a-4638-8b21-e74fa6c7f47a
+		summarizeBy: none
+		sourceColumn: release_date
+
+		variation Variation
+			isDefault
+			relationship: db110199-d487-401e-8f6c-cb706a3f6970
+			defaultHierarchy: LocalDateTable_9f652ab3-eb76-4f42-acff-fe142e4e1105.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column run_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 90e372b0-5585-445e-80f4-8e7b1141a72c
+		summarizeBy: sum
+		sourceColumn: run_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column film_rating
+		dataType: string
+		lineageTag: d5fdfbaa-b361-4d19-9da8-170428980cc6
+		summarizeBy: none
+		sourceColumn: film_rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column plot
+		dataType: string
+		lineageTag: 941b89f2-817c-4d5e-8940-cac00b3a567d
+		summarizeBy: none
+		sourceColumn: plot
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pixar_films = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/pixar_films.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"number", Int64.Type}, {"film", type text}, {"release_date", type date}, {"run_time", Int64.Type}, {"film_rating", type text}, {"plot", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

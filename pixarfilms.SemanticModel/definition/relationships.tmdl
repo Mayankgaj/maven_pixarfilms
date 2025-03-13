@@ -1,0 +1,29 @@
+relationship db110199-d487-401e-8f6c-cb706a3f6970
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pixar_films.release_date
+	toColumn: LocalDateTable_9f652ab3-eb76-4f42-acff-fe142e4e1105.Date
+
+relationship AutoDetected_710c624a-6ab1-40f1-90dc-c0cefd2a9caf
+	fromColumn: academy.film
+	toColumn: box_office.film
+
+relationship AutoDetected_9b6e6b32-657f-4236-afd0-58db384981a4
+	fromColumn: genres.film
+	toColumn: box_office.film
+
+relationship AutoDetected_b5dafb03-a39a-41d9-a738-ae3d1946fafd
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: pixar_films.film
+	toColumn: box_office.film
+
+relationship AutoDetected_7a8aab86-a4ba-4eae-bee2-5a066f0a3c6b
+	fromColumn: pixar_people.film
+	toColumn: box_office.film
+
+relationship AutoDetected_456ba105-b6e9-4b2d-872f-89178866789f
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: public_response.film
+	toColumn: box_office.film
+

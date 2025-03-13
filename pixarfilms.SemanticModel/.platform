@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "pixarfilms"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4d4cccbb-10d6-415a-a066-b4a4d5d1e04a"
+  }
+}

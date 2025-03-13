@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "pixarfilms"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "324daf9b-a4e6-4dd1-a611-64d9b560cde7"
+  }
+}

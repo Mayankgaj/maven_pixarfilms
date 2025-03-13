@@ -1,0 +1,42 @@
+table academy
+	lineageTag: 881d6f6a-16bf-4731-87b8-5ef87d56cc4c
+
+	column film
+		dataType: string
+		lineageTag: 75485bfa-fbff-462e-b277-49e85e07646b
+		summarizeBy: none
+		sourceColumn: film
+
+		annotation SummarizationSetBy = Automatic
+
+	column award_type
+		dataType: string
+		lineageTag: 533a294b-8b47-4302-a966-bd025a6af012
+		summarizeBy: none
+		sourceColumn: award_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 0456f2bc-0081-40b1-b2ff-4d67de8d1de8
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition academy = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Mayankgaj/pixarfilms/master/data-raw/academy.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"film", type text}, {"award_type", type text}, {"status", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

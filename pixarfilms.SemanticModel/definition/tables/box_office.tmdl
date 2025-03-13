@@ -1,0 +1,72 @@
+table box_office
+	lineageTag: 9d2be0de-f87c-410b-9aa0-ff6955c1fa2e
+
+	column film
+		dataType: string
+		lineageTag: b5bcdd97-8af9-4b31-9376-8d3077507915
+		summarizeBy: none
+		sourceColumn: film
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 5d779d12-929e-4c82-8cb2-5238b202c4f4
+		summarizeBy: sum
+		sourceColumn: budget
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column box_office_us_canada
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 81fd481c-f4ff-401f-81d6-db8a635b7f9f
+		summarizeBy: sum
+		sourceColumn: box_office_us_canada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column box_office_other
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 8be305ea-64c8-45a3-9c07-1bbe8ba2152d
+		summarizeBy: sum
+		sourceColumn: box_office_other
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column box_office_worldwide
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 84898408-eec3-4506-8042-8b31aa69f5c0
+		summarizeBy: sum
+		sourceColumn: box_office_worldwide
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	partition box_office = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/box_office.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"film", type text}, {"budget", type text}, {"box_office_us_canada", Int64.Type}, {"box_office_other", Int64.Type}, {"box_office_worldwide", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each true),
+				    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows","NA","0",Replacer.ReplaceText,{"budget"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Replaced Value",{{"budget", Currency.Type}, {"box_office_us_canada", Currency.Type}, {"box_office_other", Currency.Type}, {"box_office_worldwide", Currency.Type}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

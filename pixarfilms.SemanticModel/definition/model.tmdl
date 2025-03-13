@@ -1,0 +1,27 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["academy","box_office","genres","pixar_films","pixar_people","public_response"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.139.2054.0 (24.12)+334ca1c95b576cc53924655643b0d36f21caac55
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table academy
+ref table box_office
+ref table genres
+ref table pixar_films
+ref table DateTableTemplate_d8801a7c-9269-49da-9040-a7dea3130538
+ref table LocalDateTable_9f652ab3-eb76-4f42-acff-fe142e4e1105
+ref table pixar_people
+ref table public_response
+
+ref cultureInfo en-US
+
