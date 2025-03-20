@@ -1,0 +1,49 @@
+table Measure
+	lineageTag: f17797ee-a902-49d7-8e5e-70cf52a4a24f
+
+	measure 'Total Revenue' =
+			CALCULATE(
+			    SUM(box_office[box_office_worldwide])
+			)
+		formatString: "₹"#,0.00;#,0.00\ -"₹";"₹"#,0.00
+		lineageTag: 35c8ec80-1c89-41f4-ad28-35226173b226
+
+		annotation PBI_FormatHint = {"currencyCulture":"hi-IN"}
+
+	measure 'Total Movies' = COUNT(pixar_films[film])
+		formatString: 0
+		lineageTag: 5ed2a38f-a89a-4542-a6dc-5a55b636efdb
+
+	measure 'Avg IMDB Score' =
+			CALCULATE(
+			    AVERAGE(public_response[imdb_score])
+			)
+		formatString: 0
+		lineageTag: ff55cda2-5e27-405f-a226-5d9dfe47c906
+
+	measure 'Avg Rotten Tomatoes Score' =
+			AVERAGE(
+			    public_response[rotten_tomatoes_score]
+			)
+		lineageTag: 805cae2c-667a-4f42-a2c5-7daf728796b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: d9905a6f-b15e-4c01-b0a6-7c6cbb4f9958
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measure = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = e11bda9053154793afa6b4f2c9b4d067
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+
