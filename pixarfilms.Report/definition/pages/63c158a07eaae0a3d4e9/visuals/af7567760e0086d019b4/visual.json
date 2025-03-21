@@ -3,10 +3,10 @@
   "name": "af7567760e0086d019b4",
   "position": {
     "x": 0,
-    "y": 11.290322580645162,
+    "y": 11.134276838108388,
     "z": 1,
-    "height": 125.80645161290323,
-    "width": 241.93548387096774,
+    "height": 125.65826717293751,
+    "width": 240.18225750776665,
     "tabOrder": 1
   },
   "visual": {
@@ -99,6 +99,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
