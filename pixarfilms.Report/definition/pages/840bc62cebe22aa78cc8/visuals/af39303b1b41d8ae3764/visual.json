@@ -1,45 +1,33 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
-  "name": "a7cf5d3f8e6020016c05",
+  "name": "af39303b1b41d8ae3764",
   "position": {
-    "x": 792.12426648256815,
-    "y": 163.83293061788055,
-    "z": 7,
-    "height": 120.88643424231964,
-    "width": 474.00207110804274,
-    "tabOrder": 7
+    "x": 348.35443037974682,
+    "y": 24.303797468354428,
+    "z": 3,
+    "height": 125.56962025316456,
+    "width": 328.1012658227848,
+    "tabOrder": 3
   },
   "visual": {
-    "visualType": "slicer",
+    "visualType": "card",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "HierarchyLevel": {
+                "Measure": {
                   "Expression": {
-                    "Hierarchy": {
-                      "Expression": {
-                        "PropertyVariationSource": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "pixar_films"
-                            }
-                          },
-                          "Name": "Variation",
-                          "Property": "release_date"
-                        }
-                      },
-                      "Hierarchy": "Date Hierarchy"
+                    "SourceRef": {
+                      "Entity": "Measure"
                     }
                   },
-                  "Level": "Year"
+                  "Property": "Avg Rotten Tomatoes Score"
                 }
               },
-              "queryRef": "pixar_films.release_date.Variation.Date Hierarchy.Year",
-              "nativeQueryRef": "release_date Year",
-              "active": true
+              "queryRef": "Measure.Avg Rotten Tomatoes Score",
+              "nativeQueryRef": "Avg Rotten Tomatoes Score"
             }
           ]
         }
@@ -48,44 +36,66 @@
         "sort": [
           {
             "field": {
-              "HierarchyLevel": {
+              "Measure": {
                 "Expression": {
-                  "Hierarchy": {
-                    "Expression": {
-                      "PropertyVariationSource": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "pixar_films"
-                          }
-                        },
-                        "Name": "Variation",
-                        "Property": "release_date"
-                      }
-                    },
-                    "Hierarchy": "Date Hierarchy"
+                  "SourceRef": {
+                    "Entity": "Measure"
                   }
                 },
-                "Level": "Year"
+                "Property": "Avg Rotten Tomatoes Score"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "data": [
+      "labels": [
         {
           "properties": {
-            "mode": {
+            "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
                 }
               }
             },
-            "isInvertedSelectionMode": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "40D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            },
+            "preserveWhitespace": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -95,13 +105,28 @@
           }
         }
       ],
-      "header": [
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
         {
           "properties": {
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Release Date'"
+                  "Value": "'Avg Rotten Tomatoe Score'"
                 }
               }
             },
@@ -119,6 +144,24 @@
                 }
               }
             },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "null"
+                    }
+                  }
+                }
+              }
+            },
             "fontColor": {
               "solid": {
                 "color": {
@@ -131,10 +174,10 @@
                 }
               }
             },
-            "outlineStyle": {
+            "titleWrap": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "true"
                 }
               }
             },
@@ -148,10 +191,10 @@
           }
         }
       ],
-      "general": [
+      "visualHeader": [
         {
           "properties": {
-            "orientation": {
+            "transparency": {
               "expr": {
                 "Literal": {
                   "Value": "0D"
@@ -161,42 +204,30 @@
           }
         }
       ],
-      "slider": [
+      "background": [
         {
           "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "85D"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
                 }
               }
-            }
-          }
-        }
-      ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "items": [
-        {
-          "properties": {
-            "fontColor": {
+            },
+            "color": {
               "solid": {
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 0,
-                      "Percent": -0.2
+                      "Percent": 0
                     }
                   }
                 }
@@ -205,7 +236,7 @@
           }
         }
       ],
-      "pendingChangesIcon": [
+      "border": [
         {
           "properties": {
             "show": {
@@ -214,19 +245,23 @@
                   "Value": "false"
                 }
               }
-            }
-          }
-        }
-      ]
-    },
-    "visualContainerObjects": {
-      "background": [
-        {
-          "properties": {
-            "transparency": {
+            },
+            "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "80D"
+                  "Value": "3D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }

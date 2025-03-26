@@ -28,7 +28,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "false"
+                "Value": "true"
               }
             }
           }
@@ -60,6 +60,11 @@
         {
           "name": "Pixar3228816110873285.png",
           "path": "Pixar3228816110873285.png",
+          "type": "Image"
+        },
+        {
+          "name": "Background5863574885025364.jpg",
+          "path": "Background5863574885025364.jpg",
           "type": "Image"
         }
       ]

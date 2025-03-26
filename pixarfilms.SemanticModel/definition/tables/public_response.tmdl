@@ -72,6 +72,18 @@ table public_response
 
 		annotation SummarizationSetBy = Automatic
 
+	column Average_Rating =
+			
+			DIVIDE(
+			    ('public_response'[imdb_score] + 'public_response'[metacritic_score]/10 + 'public_response'[rotten_tomatoes_score]/10),
+			    3
+			)
+		formatString: 0.00
+		lineageTag: ff39e66a-a0a0-4ae7-9c40-8ce3cf9c317d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition public_response = m
 		mode: import
 		source =
